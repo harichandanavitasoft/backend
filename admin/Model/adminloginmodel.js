@@ -17,4 +17,6 @@ const admin = new schema({
     }
     
     );
+    
  module.exports=mongoose.model("admins",admin)
+ 

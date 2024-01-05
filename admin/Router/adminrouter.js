@@ -1,7 +1,8 @@
 const  express = require('express');
 const route = express.Router();
 const cors= require('cors');
-const admindata = require('../Model/adminmodel')
+
+const admindata = require('../Model/adminloginmodel')
  let corsoptions={
     origin:['http://localhost:5000']
  }
@@ -18,6 +19,7 @@ route.post('/admin/login',cors(corsoptions), async(req,res)=>{
       }else{
         res.status(500).json('user login failed'); 
       }
-})
+});
+
 
 module.exports= route;

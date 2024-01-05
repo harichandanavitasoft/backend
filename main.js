@@ -2,7 +2,8 @@ const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
 const dotenv = require('dotenv');
-const adminrouter = require('./Router/adminrouter');
+const adminrouter = require('./admin/Router/adminrouter');
+const facultyrouter=require('./admin/Router/addfacultyrouter')
 
 dotenv.config()
 const app= express();
@@ -23,3 +24,4 @@ url="mongodb://localhost:27017/backend"
     console.log("error",err)
 })
 app.use('/',cors(corsoptions),adminrouter)
+app.use('/',cors(corsoptions),facultyrouter)
