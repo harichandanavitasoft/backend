@@ -3,7 +3,11 @@ const mongoose=require('mongoose');
 const cors=require('cors');
 const dotenv = require('dotenv');
 const adminrouter = require('./admin/Router/adminrouter');
-const facultyrouter=require('./admin/Router/addfacultyrouter')
+const addfacultyrouter=require('./admin/Router/addfacultyrouter')
+const facultyrouter=require('./Faculty/Router/facultyrouter')
+const addassignmentrouter = require('./Faculty/Router/addassignmentrouter')
+const studentrouter = require('./Student/Router/studentloginrouter')
+const studenttestrouter= require('./Student/Router/studenttestrouter')
 
 dotenv.config()
 const app= express();
@@ -24,4 +28,8 @@ url="mongodb://localhost:27017/backend"
     console.log("error",err)
 })
 app.use('/',cors(corsoptions),adminrouter)
+app.use('/',cors(corsoptions),addfacultyrouter)
 app.use('/',cors(corsoptions),facultyrouter)
+app.use('/',cors(corsoptions),addassignmentrouter)
+app.use('/',cors(corsoptions),studentrouter)
+app.use('/',cors(corsoptions),studenttestrouter)
