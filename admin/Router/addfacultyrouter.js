@@ -3,6 +3,7 @@ const route = express.Router();
 const cors = require('cors');
 const multer=require('multer')
 const facultydata = require('../Model/addfacultymodel');
+const verifyToken= require('../../jwt/verifytoken')
 let corsoptions={
     origin:['http://localhost:5000']
 }
@@ -43,7 +44,8 @@ route.post('/faculty/create' ,cors(corsoptions), upload.single('image') ,async(r
         return res.status(500).json(err)
     }
 });
-route.get('/getfaculty',cors(corsoptions),async(req,res)=>{
+  module.exports = verifyToken;
+route.get('/getfaculty',cors(corsoptions),verifyToken,async(req,res)=>{
     try{
     const allfaculty = await facultydata.find()
     res.status(201).json(allfaculty)

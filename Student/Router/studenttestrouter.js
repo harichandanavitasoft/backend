@@ -25,5 +25,14 @@ route.get('/gettests',cors(corsoptions),async(req,res)=>{
 
 
     }
+});
+
+route.put('/edittest/:id',cors(corsoptions),async(req,res)=>{
+    
+    const student = await testdata.findByIdAndUpdate(req.body.id,req.body)
+    res.status(201).json(student)
+
 })
+
+
 module.exports=route;

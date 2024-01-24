@@ -20,6 +20,12 @@ const test = new schema({
     answer:{
         type:String,
         requried:true
+    },
+    marks:{
+        type:String,
+        
+        
+
     }
 
 
