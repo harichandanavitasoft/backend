@@ -43,10 +43,10 @@ const faculty = new schema({
         type:String,
         required:true
     },
-    image:{
-        type:String,
-        required:true
-    },
+    // image:{
+    //     type:String,
+    //     required:true
+    // },
     password:{
         type:String,
         required:true
