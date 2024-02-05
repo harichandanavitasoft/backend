@@ -4,6 +4,8 @@ const cors=require('cors');
 const facultydata = require('../Model/facultyloginmodel');
 const jwt = require('jsonwebtoken')
 const verifytoken = require('../../jwt/verifytoken')
+const sendemail = require("../../password/Email")
+
 let corsoptions={
     origin:['http://localhost:5000']
  }
@@ -44,6 +46,18 @@ route.get('/facultyid/:id',verifytoken, cors(corsoptions),async(req,res)=>{
   }
   catch(error){
    res.status(500).json({ error:"faculty not found"});
+  }
+});
+
+route.post("/password-reset",sendemail, cors(corsoptions),async (req, res) => {
+  const email = req.body.email
+
+  try {
+      await sendemail(email, "Password reset")
+      res.status(200).json('email sent')
+  } catch (error) {
+      res.status("An error occured");
+      console.log(error);
   }
 });
 

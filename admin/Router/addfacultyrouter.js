@@ -17,41 +17,41 @@ const storage = multer.diskStorage({
 
 
 route.post('/faculty/create' ,cors(corsoptions),verifyToken, upload.single('image') ,async(req,res)=>{
-    const faculty = new facultydata (req.body)
-    faculty.save();
-      res.status(201).json(faculty)
-});
-
-
-
-
-
-//     if(!req.file){
-//         return res.status(400).json({error:'nofile'})
-//     }
-//     var data={
-//         fullname:req.body.fullname,
-//         facultyid:req.body.facultyid,
-//         email:req.body.email,
-//         branch:req.body.branch,
-//         year:req.body.year,
-//         address:req.body.address,
-//         gender:req.body.gender,
-//         mobileno:req.body.mobileno,
-//         subject:req.body.subject,
-//         designation:req.body.designation,
-//         // image:req.file.filename,
-//         password:req.body.password
-      
-//          }
-//     try{
-//         const photo= await facultydata.create(data)
-//         return res.status(200).json(photo)
-//     }
-//     catch(err){
-//         return res.status(500).json(err)
-//     }
+//     const faculty = new facultydata (req.body)
+//     faculty.save();
+//       res.status(201).json(faculty)
 // });
+
+
+
+
+
+    if(!req.file){
+        return res.status(400).json({error:'nofile'})
+    }
+    var data={
+        fullname:req.body.fullname,
+        facultyid:req.body.facultyid,
+        email:req.body.email,
+        branch:req.body.branch,
+        year:req.body.year,
+        address:req.body.address,
+        gender:req.body.gender,
+        mobileno:req.body.mobileno,
+        subject:req.body.subject,
+        designation:req.body.designation,
+        image:req.file.filename,
+        password:req.body.password
+      
+         }
+    try{
+        const photo= await facultydata.create(data)
+        return res.status(200).json(photo)
+    }
+    catch(err){
+        return res.status(500).json(err)
+    }
+});
  
 route.get('/getfaculty',cors(corsoptions),verifyToken,async(req,res)=>{
     try{
